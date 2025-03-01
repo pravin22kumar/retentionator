@@ -9,18 +9,26 @@ import ChartSection from './ChartSection';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PieChart, Users, BarChart2, Activity } from 'lucide-react';
 
-const Dashboard = () => {
+interface DashboardProps {
+  filteredCustomers?: typeof customers;
+}
+
+const Dashboard = ({ filteredCustomers = customers }: DashboardProps) => {
   const [selectedCustomer, setSelectedCustomer] = useState(customers[0]);
   const [activeTab, setActiveTab] = useState('overview');
   
   return (
     <div className="container px-4 py-8 mx-auto max-w-7xl">
       <header className="mb-8">
-        <div className="inline-block mb-2 px-2.5 py-1 bg-retention-100 rounded-md text-xs font-medium text-retention-700 animate-fade-in">
+        <div className="inline-block mb-2 px-2.5 py-1 bg-gradient-to-r from-success-100 to-retention-100 rounded-md text-xs font-medium text-retention-700 animate-fade-in">
           Customer Intelligence Platform
         </div>
-        <h1 className="text-3xl font-bold tracking-tight mb-2 text-retention-900 animate-fade-up">Retention Dashboard</h1>
-        <p className="text-retention-500 max-w-2xl animate-fade-up">Predict customer churn and get actionable recommendations to improve retention rates.</p>
+        <h1 className="text-3xl font-bold tracking-tight mb-2 bg-gradient-to-r from-success-600 to-retention-700 bg-clip-text text-transparent animate-fade-up">
+          Retention Dashboard
+        </h1>
+        <p className="text-retention-500 max-w-2xl animate-fade-up">
+          Predict customer churn and get actionable recommendations to improve retention rates.
+        </p>
       </header>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -30,7 +38,7 @@ const Dashboard = () => {
       </div>
       
       <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
-        <TabsList className="mb-6 bg-muted/50">
+        <TabsList className="mb-6 bg-gradient-to-r from-retention-100/50 to-retention-50/50">
           <TabsTrigger value="overview" className="flex items-center data-[state=active]:bg-white">
             <PieChart className="w-4 h-4 mr-2" />
             Overview
@@ -56,14 +64,14 @@ const Dashboard = () => {
           </div>
           
           <CustomerTable 
-            customers={customers} 
+            customers={filteredCustomers} 
             onSelectCustomer={setSelectedCustomer} 
           />
         </TabsContent>
         
         <TabsContent value="customers" className="mt-0">
           <CustomerTable 
-            customers={customers} 
+            customers={filteredCustomers} 
             onSelectCustomer={setSelectedCustomer} 
           />
         </TabsContent>

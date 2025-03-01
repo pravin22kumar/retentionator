@@ -14,10 +14,22 @@ const MetricsCard = ({ metric }: MetricsCardProps) => {
     ? 'text-success-600' 
     : 'text-danger-600';
   
+  // Determine the gradient based on metric type
+  let gradientClass = '';
+  if (title.includes('Retention')) {
+    gradientClass = 'from-success-50 to-success-100';
+  } else if (title.includes('Churn')) {
+    gradientClass = 'from-danger-50 to-danger-100';
+  } else if (title.includes('Risk')) {
+    gradientClass = 'from-warning-50 to-warning-100';
+  } else {
+    gradientClass = 'from-retention-50 to-retention-100';
+  }
+  
   return (
-    <div className="metrics-card animate-scale-in">
+    <div className={`metrics-card bg-gradient-to-br ${gradientClass} animate-scale-in hover:shadow-lg transition-all duration-300`}>
       <div className="flex flex-col h-full">
-        <p className="text-sm font-medium text-retention-500 mb-1">{title}</p>
+        <p className="text-sm font-medium text-retention-600 mb-1">{title}</p>
         <p className="text-3xl font-semibold tracking-tight mb-2">{value}</p>
         
         <div className="flex items-center mt-auto">
@@ -29,7 +41,7 @@ const MetricsCard = ({ metric }: MetricsCardProps) => {
             )}
             <p className="text-sm font-medium">{Math.abs(change)}%</p>
           </div>
-          <p className="text-xs text-retention-400 ml-2">vs last month</p>
+          <p className="text-xs text-retention-500 ml-2">vs last month</p>
         </div>
       </div>
     </div>
