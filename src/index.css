@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,8 +14,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 210 20% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -35,19 +36,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -97,5 +91,83 @@
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium tracking-tight;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm;
+  }
+  
+  .metrics-card {
+    @apply rounded-xl p-6 bg-white shadow-sm border border-gray-100 transition-all duration-200 
+    hover:shadow-md hover:border-gray-200;
+  }
+
+  .prediction-card {
+    @apply rounded-xl overflow-hidden;
+  }
+
+  .high-risk {
+    @apply text-danger-600 font-medium;
+  }
+
+  .medium-risk {
+    @apply text-warning-600 font-medium;
+  }
+
+  .low-risk {
+    @apply text-success-600 font-medium;
+  }
+
+  .action-card {
+    @apply bg-white rounded-xl p-5 border border-gray-100 shadow-sm transition-all
+    hover:shadow-md hover:border-gray-200;
+  }
+}
+
+.scale-in-enter {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.scale-in-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 200ms, transform 200ms;
+}
+
+.fade-up-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fade-up-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
 }

@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,60 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom retention platform colors
+				retention: {
+					'50': '#f7f8f8',
+					'100': '#eef0f2',
+					'200': '#d5dade',
+					'300': '#b3bec7',
+					'400': '#8c9caa',
+					'500': '#6b7e8f',
+					'600': '#556473',
+					'700': '#444f5a',
+					'800': '#373f47',
+					'900': '#2d333a',
+					'950': '#1a1d21',
+				},
+				success: {
+					'50': '#f0fdf6',
+					'100': '#dcfce9',
+					'200': '#bbf7d6',
+					'300': '#86efb5',
+					'400': '#4cde8d',
+					'500': '#22c56d',
+					'600': '#16a356',
+					'700': '#158047',
+					'800': '#16653b',
+					'900': '#145434',
+					'950': '#052e19',
+				},
+				warning: {
+					'50': '#fff8ed',
+					'100': '#ffefd3',
+					'200': '#ffdaa5',
+					'300': '#ffbd6d',
+					'400': '#ff9633',
+					'500': '#ff7a10',
+					'600': '#f25a00',
+					'700': '#c93d02',
+					'800': '#a0300b',
+					'900': '#822b0d',
+					'950': '#461204',
+				},
+				danger: {
+					'50': '#fef2f2',
+					'100': '#fee2e2',
+					'200': '#fecaca',
+					'300': '#fca5a5',
+					'400': '#f87171',
+					'500': '#ef4444',
+					'600': '#dc2626',
+					'700': '#b91c1c',
+					'800': '#991b1b',
+					'900': '#7f1d1d',
+					'950': '#450a0a',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +138,31 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				'fade-up': {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'slide-in-right': {
+					'0%': { transform: 'translateX(100%)' },
+					'100%': { transform: 'translateX(0)' }
+				},
+				'scale-in': {
+					'0%': { opacity: '0', transform: 'scale(0.95)' },
+					'100%': { opacity: '1', transform: 'scale(1)' }
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.3s ease-out',
+				'fade-up': 'fade-up 0.4s ease-out',
+				'slide-in-right': 'slide-in-right 0.3s ease-out',
+				'scale-in': 'scale-in 0.2s ease-out',
 			}
 		}
 	},
